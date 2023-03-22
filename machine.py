@@ -8,6 +8,9 @@ class TextMachine:
         self.text1 = text1
         self.text2 = text2
 
+    def __eq__(self, __o: object) -> bool:
+        return self.__dir__  == __o.__dir__
+
     def is_empty(self):
         if len(self.text1) == 0 and len(self.text2) == 0:
             return True
@@ -18,7 +21,7 @@ class TextMachine:
         Module return first elements from two tuples
         """
         return (self.text1[0], self.text2[0])
-    
+
 
     def still_owe(self):
         """
@@ -49,9 +52,12 @@ class TextMachine:
         self.text2[0] += amount[1]
 
 
-    def railway_station_machine(self):
+    def add(self, needed_tup):
         pass
-    
+
+    def remove(self):
+        pass
+
     def __str__(self) -> str:
         """
         Module
