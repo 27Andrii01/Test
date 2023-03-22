@@ -2,6 +2,9 @@
     
 class TextMachine:
     def __init__(self, text1:tuple, text2:tuple) -> None:
+        """
+        Module is a class constructor
+        """
         self.text1 = text1
         self.text2 = text2
 
@@ -11,10 +14,17 @@ class TextMachine:
         return False
 
     def texts_count(self):
-        pass
+        """
+        Module return first elements from two tuples
+        """
+        return (self.text1[0], self.text2[0])
+    
 
     def still_owe(self):
-        pass
+        """
+        Module return second elements from two tuples
+        """
+        return (self.text1[1], self.text2[1])
 
     def insert_money(self):
         pass
@@ -24,6 +34,13 @@ class TextMachine:
 
     def railway_station_machine(self):
         pass
+    
+    def __str__(self) -> str:
+        """
+        Module
+        """
+        return f"Text Machine:<{self.text1[0]} texts; ₴{self.text1[1]/100} each>; <{self.text2[0]} texts; ₴{self.text2[1]/100} each>"
+    
 
 class VendingMachine(TextMachine):
     def __init__(self, text1: tuple, text2: tuple) -> None:
