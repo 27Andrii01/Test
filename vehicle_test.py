@@ -36,12 +36,7 @@ def test_classes():
     assert(v2.add_passenger(p2) == True)
     assert(str(v2) == "Bus holds 20: ['Armana'], free 19")
     assert v2.remove_passenger() == (p2, "Bus is empty!")
-    
-    # Test removing a passenger from an empty bus
-    v3 = Bus("Bus", 1, "Lviv - Kyiv")
-    assert(v3.remove_passenger() == (None, "Bus is empty!"))
-    assert(v3 != Bus('Bus', 30, "Lviv - Kyiv"))
-    
+ 
     # two buses can be compared   
     assert(v2 == Bus("Bus", 20, path))
     assert(v2 != Bus("Bus", 20, "Lviv - Tuziliv"))
@@ -57,7 +52,20 @@ def test_classes():
     except TypeError:
         pass
    
-    
+    # Test removing a passenger from an empty bus
+    v3 = Bus("Bus", 1, "Lviv - Kyiv")
+    assert(v3 != Bus('Bus', 30, "Lviv - Kyiv"))
+    assert(v3.remove_passenger() == (None, "Bus is empty!"))
+    assert v2.remove_passenger() == (p2, "Bus is empty!")
+    assert(v2.remove_passenger() == (None, "Bus is empty!"))
+
+    # Test adding a passenger to a full bus
+    v4 = Bus("Bus", 1, "Lviv - Ternopil")
+    p3 = Passenger("Sophie")
+    p4 = Passenger("Masha")
+    assert(v4.add_passenger(p3) == True)
+    assert(v4.add_passenger(p4) == False)
+
     # a buggy is a vehicle with a name and an assumed capacity of 1
     b1 = Buggy("ADC Buggy")
     p4 = Driver("Driver")
