@@ -57,4 +57,32 @@ def test_vehicle():
     assert p6.place == v5
     assert str(v3) == "Honda holds 3: ['Olenka', 'Maksym'], free 1"
     print("Done!")
+    
+    path = "Lviv - Stari Kuty"
+    assert(type(v2) == Bus and isinstance(v2, Bus))
+    assert(v2 == Bus("Bus", 20, path))
+    assert(v2 != Bus("Bus", 20, "Lviv - Tuziliv"))
+    assert(v2 != v1)
+        try: Bus("Bus", -10, "Lviv - Tuziliv")
+    except: ok = False # should not reach here
+    assert(ok == False)
+    try:
+        v2 = Bus("Bus", "invalid_capacity", "Lviv - Tuziliv")
+        assert(False) # should not reach here
+    except TypeError:
+        pass
+    
+        v3 = Bus("Bus", 1, "Lviv - Kyiv")
+    assert(v3 != Bus('Bus', 30, "Lviv - Kyiv"))
+    assert(v3.remove_passenger() == (None, "Bus is empty!"))
+    assert v2.remove_passenger() == (p2, "Bus is empty!")
+    assert(v2.remove_passenger() == (None, "Bus is empty!"))
+
+    # Test adding a passenger to a full bus
+    v4 = Bus("Bus", 1, "Lviv - Ternopil")
+    p3 = Passenger("Sophie")
+    p4 = Passenger("Masha")
+    assert(v4.add_passenger(p3) == True)
+    assert(v4.add_passenger(p4) == False)
+ 
 test_vehicle()
