@@ -16,8 +16,16 @@ class TextMachine:
     def still_owe(self):
         pass
 
-    def insert_money(self):
-        pass
+    def insert_money(self, user_input: tuple):
+        """"""
+        change = 0
+        if user_input[0] < 0:
+            return 'You cant take money from machine!'
+        if user_input[1] == 'short':
+            txt  =  f'Still owe ₴{(self.still_owe()[0] - user_input[0])/100}'
+            change += user_input[0]
+            return tuple(txt, change)
+
 
     def stock_machine(self):
         pass
