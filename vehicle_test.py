@@ -35,12 +35,23 @@ def test_classes():
     assert(v2.add_passenger(p2) == True)
     assert(str(v2) == "Bus holds 20: ['Armana'], free 19")
     assert v2.remove_passenger() == (p2, "Bus is empty!")
+    assert(v2.remove_passenger() == (None, "Bus is empty!"))
     
     # two buses can be compared   
     assert(v2 == Bus("Bus", 20, path))
     assert(v2 != Bus("Bus", 20, "Lviv - Tuziliv"))
     assert(v2 != v1)
     assert(v2 != "Bus") # should not crash!
+    assert str(v2) == "Bus holds 20: [], free 20"
+    try: Bus("Bus", -10, "Lviv - Tuziliv")
+    except: ok = False # should not reach here
+    assert(ok == False)
+    try:
+        v2 = Bus("Bus", "invalid_capacity", "Lviv - Tuziliv")
+        assert(False) # should not reach here
+    except TypeError:
+        pass
+   
     
     # a buggy is a vehicle with a name and an assumed capacity of 1
     b1 = Buggy("ADC Buggy")
