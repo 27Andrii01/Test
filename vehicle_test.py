@@ -30,12 +30,17 @@ def test_classes():
     # a bus has a name, a capacity and a path
     path = "Lviv - Stari Kuty"
     v2 = Bus("Bus", 20, path)
+    assert(type(v2) == Bus and isinstance(v2, Bus))
     # can't remove a passenger from an empty bus or vehicle
     assert(v2.remove_passenger() == False)
     assert(v2.add_passenger(p2) == True)
     assert(str(v2) == "Bus holds 20: ['Armana'], free 19")
     assert v2.remove_passenger() == (p2, "Bus is empty!")
-    assert(v2.remove_passenger() == (None, "Bus is empty!"))
+    
+    # Test removing a passenger from an empty bus
+    v3 = Bus("Bus", 1, "Lviv - Kyiv")
+    assert(v3.remove_passenger() == (None, "Bus is empty!"))
+    assert(v3 != Bus('Bus', 30, "Lviv - Kyiv"))
     
     # two buses can be compared   
     assert(v2 == Bus("Bus", 20, path))
