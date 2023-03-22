@@ -39,12 +39,15 @@ class TextMachine:
             res.append(change)
         return tuple(res)
 
+    def stock_machine(self, amount:tuple):
+        """Stock machine method. Cnages amount of items in machine"""
+        if not isinstance(amount[0], int) and amount[0]<0:
+            return 'Amount can only be int and should be bigger that 0!'
+        if not isinstance(amount[1], int) and amount[1]<0:
+            return 'Amount can only be int and should be bigger that 0!'
+        self.text1[0] += amount[0]
+        self.text2[0] += amount[1]
 
-
-
-
-    def stock_machine(self):
-        pass
 
     def railway_station_machine(self):
         pass
